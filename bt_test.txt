@@ -1,0 +1,153 @@
+ï»¿1) Write a program that will display on the screen numbers 1 to 50 in order.  Each number is to be separated by a comma and space (, ).   Every multiple of 3 must have a $ before it.  Every multiple of 4 must be surrounded by round brackets ().
+
+Example: 1, 2, $3, (4), 5, … ($12), … 50
+
+ 
+
+2) Write a program that given a list of N numbers (1 to N), it will select M random, unique numbers from that list.  
+
+ 
+
+3) You have to design a database to store customer information for a pizza delivery system.  Each customer may have more than 1 address.  You must be able to at least query/retrieve the customer name, age, telephone, address and anything else that you may need.  You only need to design the table(s) to store the customer information.
+
+Use the format of a sql create table command.  You do not have to worry about NULLs or stating foreign keys constraint.
+
+Example:
+
+CREATE TABLE tablename (
+
+   columnName1 integer,
+
+   columnName2 text,
+
+   columnName3 timestamp,
+
+   columnName4 boolean, 
+
+   columnName5 decimal(10,2),
+
+   Primary Key (columnName1 )
+
+);
+
+ 
+
+4) For the database above (you may need to adjust your initial design), write 1 SQL query for each:
+
+a) Query all the customers on Nguyen Trai street
+
+b) Find customers who have entered in their work address
+
+c) Find the preferred default address of the customer “John Woo”
+
+ 
+
+ 
+
+5)  JSON is an easy way to store data (www.w3schools.com/json/) .  
+
+ 
+
+Take data in the format:
+
+$data = array(
+
+   array( 'category_id' => 1, 'parent_id' => 0, 'name' => 'Food' ),
+
+   array( 'category_id' => 2, 'parent_id' => 0, 'name' => 'Drinks' ),
+
+   array( 'category_id' => 3, 'parent_id' => 2, 'name' => 'Beer' ),
+
+   array( 'category_id' => 4, 'parent_id' => 2, 'name' => 'Wine' ),
+
+   array( 'product_id' => 1, 'parent_id' => 3, 'name' => 'Kokanee' ),
+
+   array( 'product_id' => 2, 'parent_id' => 3, 'name' => 'Labatt' ),
+
+   array( 'product_id' => 3, 'parent_id' => 4, 'name' => 'House Wine' ),
+
+   array( 'product_id' => 4, 'parent_id' => 1, 'name' => 'Hot Dog' ),
+
+   array( 'product_id' => 5, 'parent_id' => 2, 'name' => 'Water' ), 
+
+   array( 'product_id' => 6, 'parent_id' => 1, 'name' => 'Rice' ),
+
+ 
+
+);
+
+ 
+
+and convert into this format (parent_id is a category_id):
+
+ 
+
+$data = array(
+
+   array( 'category_id' => 1, 'parent_id' => 0, 'name' => 'Food',
+
+      'children' => array(
+
+         array( 'product_id' => 4, 'parent_id' => 1, 'name' => 'Hot Dog' ),
+
+         array( 'product_id' => 6, 'parent_id' => 1, 'name' => 'Rice' )
+
+ 
+
+   )),
+
+   array( 'category_id' => 2, 'parent_id' => 0, 'name' => 'Drinks',
+
+      'children' => array(
+
+         array( 'category_id' => 3, 'parent_id' => 2, 'name' => 'Beer',
+
+            'children' => array(
+
+               array( 'product_id' => 1, 'parent_id' => 3, 'name' => 'Kokanee' ),
+
+               array( 'product_id' => 2, 'parent_id' => 3, 'name' => 'Labatt' )
+
+         )),
+
+         array( 'category_id' => 4, 'parent_id' => 2, 'name' => 'Wine',
+
+            'children' => array (
+
+               array( 'product_id' => 3, 'parent_id' => 4, 'name' => 'House Wine' )
+
+         )),
+
+         array( 'product_id' => 5, 'parent_id' => 2, 'name' => 'Water' )
+
+      )
+
+   )
+
+);
+
+ 
+
+Then output it as a JSON data string (to the screen or file).
+
+ 
+
+6)
+Make a web page that will grab the above data in JSON format, then build and display it in a tree GUI.
+Use jQuery (preferably) and build the tree GUI from scratch (do not use any tree widgets from the internet).  If you do not know jQuery, you may use regular Javascript.
+ 
+The tree should look similar to this:
++Root
+   +Food
+      #Hot Dog
+      #Rice
+   +Drnks
+      +Beer
+         #Kokanee
+         #Labatt
+      +Wine
+         #House Wine
+      #Water
+ 
+The categories should be able to open and close.
+ 
